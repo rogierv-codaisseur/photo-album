@@ -10,7 +10,9 @@ const AlbumsList = props => {
       <ul>
         {props.albums.map(album => (
           <li key={album.id}>
-            <Link to={`/albums/${album.id}`}>{album.title}</Link>
+            <Link to={`/albums/${album.id}`} title={album.title}>
+              {album.title}
+            </Link>
           </li>
         ))}
       </ul>

@@ -2,7 +2,6 @@ import React from 'react';
 import PhotoPage from './PhotoPage';
 import { connect } from 'react-redux';
 import { getPhotosByAlbum } from '../actions/photos';
-import { request } from 'superagent';
 
 class PhotoPageContainer extends React.Component {
   componentDidMount() {

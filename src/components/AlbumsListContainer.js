@@ -1,21 +1,29 @@
 import React from 'react';
-import request from 'superagent';
 import AlbumsList from './AlbumsList';
+import { connect } from 'react-redux';
+import { addAlbum, getAlbums } from '../actions/albums';
 
-export default class AlbumsListContainer extends React.Component {
+class AlbumsListContainer extends React.Component {
   state = {};
 
   componentDidMount() {
-    request('https://jsonplaceholder.typicode.com/albums').then(response =>
-      this.setState({ albums: response.body })
-    );
+    this.props.getAlbums();
   }
 
   render() {
-    if (!this.state.albums) {
+    if (!this.props.albums) {
       return <p>Loading...</p>;
     } else {
-      return <AlbumsList albums={this.state.albums} />;
+      return <AlbumsList albums={this.props.albums} />;
     }
   }
 }
+
+const mapStateToProps = state => {
+  return { albums: state.albums };
+};
+
+export default connect(
+  mapStateToProps,
+  { addAlbum, getAlbums }
+)(AlbumsListContainer);

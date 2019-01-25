@@ -5,8 +5,6 @@ import { addAlbum, getAlbums, createAlbum } from '../actions/albums';
 import AddAlbumForm from './AddAlbumForm';
 
 class AlbumsListContainer extends React.Component {
-  state = {};
-
   componentDidMount() {
     this.props.getAlbums();
   }
